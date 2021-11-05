@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  gopai:
+    image: gopai-service
+    ports:
+      - 9000
+    labels:
+      kompose.service.type: NodePort
+    env_file: .env
+    volumes:
+      - .:/home/gopai-service
+    networks:
+      - main_network
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: gopai
+      POSTGRES_DB: gopaidb
+      POSTGRES_PASSWORD: gopaipasswd
+    ports:
+      - 5432
+    volumes:
+      - ./.data/postgres-data:/var/lib/postgresql/data
+    networks:
+      - main_network
+
+networks:
+  main_network:
+    driver: bridge
