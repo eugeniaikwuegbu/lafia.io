@@ -1,14 +1,14 @@
 # About
-Dropper Service
+Lafia services
 
 ## Installation
 To clone the project:
 ```bash
-https://github.com/GOFAST-hub/dropper-service.git
+https://github.com/eugeniaikwuegbu/lafia.io.git
 ```
-`cd` into the `dropper-service` directory
+`cd` into the `lafia folder` directory
 ```bash
-cd dropper-service
+cd lafia.io
 ```
 
 create a `.env` file with actual values similar to the `.env.example` file.
