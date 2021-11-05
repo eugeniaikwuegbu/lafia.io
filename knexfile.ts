@@ -48,7 +48,7 @@ const config = {
   },
   migrations: {
     directory: './src/database/migrations',
-    tableName: 'dropper_service_migrations',
+    tableName: 'lafia_service_migrations',
     extension: 'ts',
   },
   seeds: {

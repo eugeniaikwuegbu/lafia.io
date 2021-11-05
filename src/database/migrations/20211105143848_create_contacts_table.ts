@@ -5,25 +5,27 @@ import { Table } from '../table';
 export async function up(knex: Knex): Promise<void> {
   return knex
     .transaction(async (trx: Knex.Transaction) => trx.schema
-      .createSchemaIfNotExists(Schema.dropperService)
-      .then(() => trx.schema.hasTable(Table.twilio_services)
+      .createSchemaIfNotExists(Schema.lafiaService)
+      .then(() => trx.schema.hasTable(Table.contacts)
         .then((tableExists: boolean) => {
           if (!tableExists) {
             return trx.schema
-              .withSchema(Schema.dropperService)
-              .createTable(Table.twilio_services, (tableBuilder: Knex.CreateTableBuilder) => {
+              .withSchema(Schema.lafiaService)
+              .createTable(Table.contacts, (tableBuilder: Knex.CreateTableBuilder) => {
                 tableBuilder
                   .uuid('id')
                   .unique()
                   .notNullable()
                   .defaultTo(knex.raw('gen_random_uuid()'))
-                  .primary(`${Table.twilio_services}_id`);
+                  .primary(`${Table.contacts}_id`);
                 tableBuilder
-                  .string('sid')
-                  .notNullable();
+                  .string('phone_number')
                 tableBuilder
-                  .string('friendly_name')
-                  .notNullable();
+                  .string('alternate_number')
+                tableBuilder
+                  .string('email_adddress')
+                tableBuilder
+                  .string('website')
                 tableBuilder
                   .timestamps(true, true);
               });
@@ -34,5 +36,5 @@ export async function up(knex: Knex): Promise<void> {
 
 // noinspection JSUnusedGlobalSymbols
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.withSchema(Schema.dropperService).dropTableIfExists(Table.twilio_services);
+  return knex.schema.withSchema(Schema.lafiaService).dropTableIfExists(Table.contacts);
 }

@@ -1,7 +1,7 @@
 {
   "name": "lafia-service",
   "version": "1.0.0",
-  "description": "Server-Side implementation for dropper services.",
+  "description": "Server-Side implementation for lafia services.",
   "main": "./dist/src/app/index.js",
   "scripts": {
     "start": "node dist/src/app/index.js",
@@ -33,7 +33,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eugeniaikwuegbu/lafia.io.git"
+    "url": "https://github.com/eugeniaikwuegbu/lafia.io.git"
   },
   "bugs": {
     "url": "https://github.com/eugeniaikwuegbu/lafia.io/issues"

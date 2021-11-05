@@ -1,3 +1,3 @@
 export class Schema {
-  public static dropperService = 'dropper-service';
+  public static lafiaService = "lafia-service";
 }

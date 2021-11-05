@@ -9,7 +9,7 @@ module.exports = {
       script: './dist/app/index.js',
       source_map_support: true,
       exec_mode: 'cluster',
-      instances: 'parallelscore',
+      instances: 'lafia',
     },
   ],
 };

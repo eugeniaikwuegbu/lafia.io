@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/gopai-service || exit
+cd /home/lafia-service || exit
 
 yarn
 

@@ -4,7 +4,6 @@ import express from 'express';
 import container from './config/inversify.config';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { Env } from './config';
-import { PhoneUtils } from './utils';
 
 if (process.env.NODE_ENV !== 'production') {
   dotConfig();
@@ -18,9 +17,6 @@ server.setConfig((app) => {
   app.use(cors({
     origin: '*',
   }));
-
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  app.use(PhoneUtils.formatPhoneNumber);
 });
 
 const serverInstance = server.build();
