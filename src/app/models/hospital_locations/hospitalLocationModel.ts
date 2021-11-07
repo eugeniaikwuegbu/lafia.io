@@ -1,4 +1,4 @@
-import { JSONSchema } from 'objection';
+import {JSONSchema, RelationMappings} from 'objection';
 import { Schema, Table } from '../../../database';
 import { BaseModel } from '../base';
 import { IHospitalLocation } from './interfaces';
@@ -14,5 +14,26 @@ export class HospitalLocationModel extends BaseModel implements IHospitalLocatio
 
   static get jsonSchema(): JSONSchema {
     return HospitalLocationValidation;
+  }
+  static get relationMappings(): RelationMappings {
+    return {
+      hospitals: {
+        relation: BaseModel.BelongsToOneRelation,
+        modelClass: '../hospitals',
+        join: {
+          from: `${Schema.lafiaService}.${Table.hospital_locations}.hospital_id`,
+          to: `${Schema.lafiaService}.${Table.hospitals}.id`
+        }
+      },
+
+      locations: {
+        relation: BaseModel.BelongsToOneRelation,
+        modelClass: '../locations',
+        join: {
+          from: `${Schema.lafiaService}.${Table.hospital_locations}.location_id`,
+          to: `${Schema.lafiaService}.${Table.locations}.id`
+        }
+      },
+    }
   }
 }

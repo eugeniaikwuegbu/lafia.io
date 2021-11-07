@@ -1,4 +1,4 @@
-import { JSONSchema } from 'objection';
+import {JSONSchema, RelationMappings} from 'objection';
 import { Schema, Table } from '../../../database';
 import { BaseModel } from '../base';
 import { IHospital } from './interfaces';
@@ -27,5 +27,35 @@ export class HospitalModel extends BaseModel implements IHospital {
 
   static get jsonSchema(): JSONSchema {
     return HospitalValidation;
+  }
+  static get relationshipMappings(): RelationMappings {
+    return {
+      statuses: {
+        relation: BaseModel.BelongsToOneRelation,
+        modelClass: '../statuses',
+        join: {
+          from: `${Schema.lafiaService}.${Table.hospitals}.status_id`,
+          to: `${Schema.lafiaService}.${Table.statuses}.id`
+        }
+      },
+
+      personnels: {
+        relation: BaseModel.BelongsToOneRelation,
+        modelClass: '../personnels',
+        join: {
+          from: `${Schema.lafiaService}.${Table.hospitals}.personnel_id`,
+          to: `${Schema.lafiaService}.${Table.personnels}.id`
+        }
+      },
+
+      contacts: {
+        relation: BaseModel.BelongsToOneRelation,
+        modelClass: '../contacts',
+        join: {
+          from: `${Schema.lafiaService}.${Table.hospitals}.contact_id`,
+          to: `${Schema.lafiaService}.${Table.contacts}.id`
+        }
+      }
+    }
   }
 }
