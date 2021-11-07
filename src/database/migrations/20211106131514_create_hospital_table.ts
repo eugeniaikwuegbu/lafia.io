@@ -44,7 +44,7 @@ export async function up(knex: Knex): Promise<void> {
                   .unique()
                   .notNullable();
                 tableBuilder
-                  .dateTime('personnel_id')
+                  .uuid('personnel_id')
                   .unique()
                   .notNullable();
                 tableBuilder

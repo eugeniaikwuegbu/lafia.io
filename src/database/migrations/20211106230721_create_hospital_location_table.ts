@@ -6,28 +6,39 @@ export async function up(knex: Knex): Promise<void> {
   return knex
     .transaction(async (trx: Knex.Transaction) => trx.schema
       .createSchemaIfNotExists(Schema.lafiaService)
-      .then(() => trx.schema.hasTable(Table.contacts)
+      .then(() => trx.schema.hasTable(Table.hospital_locations)
         .then((tableExists: boolean) => {
           if (!tableExists) {
             return trx.schema
               .withSchema(Schema.lafiaService)
-              .createTable(Table.contacts, (tableBuilder: Knex.CreateTableBuilder) => {
+              .createTable(Table.hospital_locations, (tableBuilder: Knex.CreateTableBuilder) => {
                 tableBuilder
                   .uuid('id')
                   .unique()
                   .notNullable()
                   .defaultTo(knex.raw('gen_random_uuid()'))
-                  .primary(`${Table.contacts}_id`);
+                  .primary(`${Table.hospital_locations}_id`);
                 tableBuilder
-                  .string('phone_number')
+                  .uuid('hospital_id')
+                  .unique()
+                  .notNullable();
                 tableBuilder
-                  .string('alternate_number')
-                tableBuilder
-                  .string('email_address')
-                tableBuilder
-                  .string('website')
+                  .uuid('location_id')
+                  .unique()
+                  .notNullable();
                 tableBuilder
                   .timestamps(true, true);
+
+                // Foreign Key Constraints
+                tableBuilder
+                  .foreign('hospital_id')
+                  .references('id')
+                  .inTable(`${Schema.lafiaService}.${Table.hospitals}`);
+                tableBuilder
+                  .foreign('location_id')
+                  .references('id')
+                  .inTable(`${Schema.lafiaService}.${Table.locations}`);
+
               });
           }
         }))
@@ -36,5 +47,5 @@ export async function up(knex: Knex): Promise<void> {
 
 // noinspection JSUnusedGlobalSymbols
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.withSchema(Schema.lafiaService).dropTableIfExists(Table.contacts);
+  return knex.schema.withSchema(Schema.lafiaService).dropTableIfExists(Table.hospital_locations);
 }
