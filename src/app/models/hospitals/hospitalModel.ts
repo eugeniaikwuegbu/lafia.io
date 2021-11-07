@@ -1,30 +1,31 @@
 import { JSONSchema } from 'objection';
 import { Schema, Table } from '../../../database';
 import { BaseModel } from '../base';
-import { IService } from './interfaces';
-import { ServiceValidation } from './validation';
+import { IHospital } from './interfaces';
+import { HospitalValidation } from './validation';
 
-export class HospitalModel extends BaseModel implements IService {
-  public out_patient: IService['out_patient'];
-  public in_patient: IService['in_patient'];
-  public medical: IService['medical'];
-  public surgical: IService['surgical'];
-  public obsterics_and_gynae: IService['obsterics_and_gynae'];
-  public pediatrics: IService['pediatrics'];
-  public dental: IService['dental'];
-  public specific_clinical: IService['specific_clinical'];
-  public bed: IService['bed'];
-  public onsite_lab: IService['onsite_lab'];
-  public onsite_imaging: IService['onsite_imaging'];
-  public onsite_pharmacy: IService['onsite_pharmacy'];
-  public mortuary: IService['mortuary'];
-  public ambulance: IService['ambulance'];
+export class HospitalModel extends BaseModel implements IHospital {
+  public facility_code: IHospital['facility_code'];
+  public state_unique_id: IHospital['state_unique_id'];
+  public registration_number: IHospital['registration_number'];
+  public facility_name: IHospital['facility_name'];
+  public alternate_name: IHospital['alternate_name'];
+  public status_id: IHospital['status_id'];
+  public contact_id: IHospital['contact_id'];
+  public personnel_id: IHospital['personnel_id'];
+  public start_date: IHospital['start_date'];
+  public ownership: IHospital['ownership'];
+  public ownership_type: IHospital['ownership_type'];
+  public facility_level: IHospital['facility_level'];
+  public facility_level_option: IHospital['facility_level_option'];
+  public days_of_operation: IHospital['days_of_operation'];
+  public hours_of_operation: IHospital['hours_of_operation'];
 
   static get tableName(): string {
-    return `${Schema.lafiaService}.${Table.services}`;
+    return `${Schema.lafiaService}.${Table.hospitals}`;
   }
 
   static get jsonSchema(): JSONSchema {
-    return ServiceValidation;
+    return HospitalValidation;
   }
 }
