@@ -34,7 +34,7 @@ export async function up(knex: Knex): Promise<void> {
                   .string('obsterics_and_gynae')
                   .notNullable();
                 tableBuilder
-                  .string('paediatrics')
+                  .string('pediatrics')
                   .notNullable();
                 tableBuilder
                   .string('dental')
