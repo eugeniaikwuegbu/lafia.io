@@ -5,6 +5,7 @@ export class Table {
   public static locations = "locations";
   public static hospitals = "hospitals";
   public static personnels = "personnels";
+  public static fileUpload = "fileUpload";
   public static hospital_services = "hospital_services";
   public static hospital_locations = "hospital_locations";
 }

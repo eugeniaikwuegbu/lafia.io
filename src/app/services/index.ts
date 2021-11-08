@@ -1,2 +1,9 @@
-// export * from './statuses';
-
+export * from './hospitals';
+export * from './contacts';
+export * from './statuses';
+export * from './services';
+export * from './locations';
+export * from './personnels';
+export * from './fileUploads';
+export * from './hospitalServices';
+export * from './hospitalLocations';
