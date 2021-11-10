@@ -36,18 +36,6 @@ export async function up(knex: Knex): Promise<void> {
                   .string('alternate_name')
                   .notNullable();
                 tableBuilder
-                  .uuid('status_id')
-                  .unique()
-                  .notNullable();
-                tableBuilder
-                  .uuid('contact_id')
-                  .unique()
-                  .notNullable();
-                tableBuilder
-                  .uuid('personnel_id')
-                  .unique()
-                  .notNullable();
-                tableBuilder
                   .dateTime('start_date')
                   .notNullable();
                 tableBuilder
@@ -68,6 +56,26 @@ export async function up(knex: Knex): Promise<void> {
                   .string('hours_of_operation')
                   .notNullable();
                 tableBuilder
+                  .uuid('status_id')
+                  .unique()
+                  .notNullable();
+                tableBuilder
+                  .uuid('contact_id')
+                  .unique()
+                  .notNullable();
+                tableBuilder
+                  .uuid('personnel_id')
+                  .unique()
+                  .notNullable();
+                tableBuilder
+                  .uuid('location_id')
+                  .unique()
+                  .notNullable();
+                tableBuilder
+                  .uuid('service_id')
+                  .unique()
+                  .notNullable();
+                tableBuilder
                   .timestamps(true, true);
 
                 // Foreign Key Constraints
@@ -85,6 +93,14 @@ export async function up(knex: Knex): Promise<void> {
                   .foreign('personnel_id')
                   .references('id')
                   .inTable(`${Schema.lafiaService}.${Table.personnels}`);
+                tableBuilder
+                  .foreign('location_id')
+                  .references('id')
+                  .inTable(`${Schema.lafiaService}.${Table.locations}`);
+                tableBuilder
+                  .foreign('service_id')
+                  .references('id')
+                  .inTable(`${Schema.lafiaService}.${Table.services}`);
               });
           }
         }))
