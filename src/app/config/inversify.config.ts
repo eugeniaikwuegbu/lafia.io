@@ -3,20 +3,15 @@ import TYPES from './types';
 import { Container } from 'inversify';
 import {
   ContactRepository, StatusRepository,
-  HospitalLocationRepository, HospitalRepository,
-  HospitalServiceRepository, LocationRepository,
-  PersonnelRepository, ServiceRepository, FileUploadRepository,
+  HospitalRepository, LocationRepository,
+  PersonnelRepository, ServiceRepository
 } from '../repositories';
 import {
-  ContactService, HospitalLocationService,
-  HospitalService, HospitalServiceService,
+  ContactService, HospitalService,
   LocationService, PersonnelService,
-  ServicesService, StatusService, FileUploadService
+  ServicesService, StatusService
 } from "../services";
-import {UploadController} from "../controllers/uploadFile";
-
-// import {} from '../controllers';
-// import {} from '../services';
+import {UploadController} from '../controllers';
 
 const container = new Container();
 
@@ -59,20 +54,6 @@ container
   .to(PersonnelService)
   .inSingletonScope();
 
-container
-  .bind<FileUploadService>(TYPES.FileUploadService)
-  .to(FileUploadService)
-  .inSingletonScope();
-
-container
-  .bind<HospitalServiceService>(TYPES.HospitalServiceService)
-  .to(HospitalServiceService)
-  .inSingletonScope();
-
-container
-  .bind<HospitalLocationService>(TYPES.HospitalLocationService)
-  .to(HospitalLocationService)
-  .inSingletonScope();
 
 // repositories
 container
@@ -81,19 +62,10 @@ container
   .inSingletonScope();
 
 container
-  .bind<HospitalLocationRepository>(TYPES.HospitalLocationRepository)
-  .to(HospitalLocationRepository)
-  .inSingletonScope();
-
-container
   .bind<HospitalRepository>(TYPES.HospitalRepository)
   .to(HospitalRepository)
   .inSingletonScope();
 
-container
-  .bind<HospitalServiceRepository>(TYPES.HospitalServiceRepository)
-  .to(HospitalServiceRepository)
-  .inSingletonScope();
 
 container
   .bind<LocationRepository>(TYPES.LocationRepository)
@@ -115,9 +87,5 @@ container
   .to(StatusRepository)
   .inSingletonScope();
 
-container
-  .bind<FileUploadRepository>(TYPES.FileUploadRepository)
-  .to(FileUploadRepository)
-  .inSingletonScope();
 
 export default container;
