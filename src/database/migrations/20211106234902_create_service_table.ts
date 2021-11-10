@@ -19,10 +19,10 @@ export async function up(knex: Knex): Promise<void> {
                   .defaultTo(knex.raw('gen_random_uuid()'))
                   .primary(`${Table.services}_id`);
                 tableBuilder
-                  .boolean('out_patient')
+                  .string('out_patient')
                   .notNullable();
                 tableBuilder
-                  .boolean('in_patient')
+                  .string('in_patient')
                   .notNullable();
                 tableBuilder
                   .string('medical')
@@ -46,19 +46,19 @@ export async function up(knex: Knex): Promise<void> {
                   .integer('bed')
                   .notNullable();
                 tableBuilder
-                  .boolean('onsite_lab')
+                  .string('onsite_lab')
                   .notNullable();
                 tableBuilder
-                  .boolean('onsite_imaging')
+                  .string('onsite_imaging')
                   .notNullable();
                 tableBuilder
-                  .boolean('onsite_pharmacy')
+                  .string('onsite_pharmacy')
                   .notNullable();
                 tableBuilder
-                  .boolean('mortuary')
+                  .string('mortuary')
                   .notNullable();
                 tableBuilder
-                  .boolean('ambulance')
+                  .string('ambulance')
                   .notNullable();
                 tableBuilder
                   .timestamps(true, true);

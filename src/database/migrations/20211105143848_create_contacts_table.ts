@@ -23,7 +23,7 @@ export async function up(knex: Knex): Promise<void> {
                 tableBuilder
                   .string('alternate_number')
                 tableBuilder
-                  .string('email_address')
+                  .string('email')
                 tableBuilder
                   .string('website')
                 tableBuilder

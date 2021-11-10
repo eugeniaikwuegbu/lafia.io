@@ -22,7 +22,7 @@ export async function up(knex: Knex): Promise<void> {
                   .string('state')
                   .notNullable();
                 tableBuilder
-                  .string('lg')
+                  .string('lga')
                   .notNullable();
                 tableBuilder
                   .string('ward')

@@ -19,35 +19,37 @@ export async function up(knex: Knex): Promise<void> {
                   .defaultTo(knex.raw('gen_random_uuid()'))
                   .primary(`${Table.personnels}_id`);
                 tableBuilder
-                  .integer('doctor')
+                  .integer('doctors')
                 tableBuilder
-                  .integer('pharmacist')
+                  .integer('pharmacists')
                 tableBuilder
-                  .integer('pharmacy_technician')
+                  .integer('pharmacy_technicians')
                 tableBuilder
-                  .integer('dentist')
+                  .integer('dentists')
                 tableBuilder
-                  .integer('dental_technician')
+                  .integer('dental_technicians')
                 tableBuilder
-                  .integer('nurse')
+                  .integer('nurses')
                 tableBuilder
-                  .integer('midwife')
+                  .integer('midwifes')
                 tableBuilder
-                  .integer('lab_technician')
+                  .integer('nurses_or_midwifes')
                 tableBuilder
-                  .integer('lab_scientist')
+                  .integer('lab_technicians')
                 tableBuilder
-                  .integer('health_records_officer')
+                  .integer('lab_scientists')
                 tableBuilder
-                  .integer('community_health_officer')
+                  .integer('health_records_officers')
                 tableBuilder
-                  .integer('community_health_extension_worker')
+                  .integer('community_health_officers')
                 tableBuilder
-                  .integer('junior_community_health_extension_worker')
+                  .integer('community_health_extension_workers')
                 tableBuilder
-                  .integer('environment_health_officer')
+                  .integer('junior_community_health_extension_workers')
                 tableBuilder
-                  .integer('health_attendant')
+                  .integer('environment_health_officers')
+                tableBuilder
+                  .integer('health_attendants')
                 tableBuilder
                   .timestamps(true, true);
               });
