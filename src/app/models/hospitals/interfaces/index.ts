@@ -6,9 +6,6 @@ export interface IHospital extends IBase {
  registration_number: string;
  facility_name: string;
  alternate_name: string;
- status_id: string;
- contact_id: string;
- personnel_id: string;
  start_date: string;
  ownership: string;
  ownership_type: string;
@@ -16,6 +13,11 @@ export interface IHospital extends IBase {
  facility_level_option: string;
  days_of_operation: string;
  hours_of_operation: string;
+ status_id: string;
+ contact_id: string;
+ personnel_id: string;
+ location_id: string;
+ service_id: string;
 }
 
 export interface IFindHospital extends IBase {
@@ -24,9 +26,6 @@ export interface IFindHospital extends IBase {
   registration_number?: string;
   facility_name?: string;
   alternate_name?: string;
-  status_id?: string;
-  contact_id?: string;
-  personnel_id?: string;
   start_date?: string;
   ownership?: string;
   ownership_type?: string;
@@ -34,4 +33,9 @@ export interface IFindHospital extends IBase {
   facility_level_option?: string;
   days_of_operation?: string;
   hours_of_operation?: string;
+  status_id?: string;
+  contact_id?: string;
+  personnel_id?: string;
+  location_id?: string;
+  service_id?: string;
 }

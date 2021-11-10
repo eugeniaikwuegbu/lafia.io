@@ -9,16 +9,18 @@ export const HospitalValidation: JSONSchema = {
     'registration_number',
     'facility_name',
     'alternate_name',
-    'status_id',
-    'contact_id',
-    'personnel_id',
     'start_date',
     'ownership',
     'ownership_type',
     'facility_level',
     'facility_level_option',
     'days_of_operation',
-    'hours_of_operation'
+    'hours_of_operation',
+    'status_id',
+    'contact_id',
+    'personnel_id',
+    'location_id',
+    'service_id'
   ],
   properties: {
     facility_code: { type: 'string' },
@@ -26,9 +28,6 @@ export const HospitalValidation: JSONSchema = {
     registration_number: { type: 'string'},
     facility_name: { type: 'string' },
     alternate_name: { type: 'string' },
-    status_id: {format: 'uuid'},
-    contact_id: { format: 'uuid' },
-    personnel_id: { format: 'uuid' },
     start_date: {type: 'string'},
     ownership: { type: 'string' },
     ownership_type: {type: 'string'},
@@ -36,5 +35,11 @@ export const HospitalValidation: JSONSchema = {
     facility_level_option: { type: 'string' },
     days_of_operation: {type: 'string'},
     hours_of_operation: { type: 'string' },
+    status_id: {format: 'uuid'},
+    contact_id: { format: 'uuid' },
+    personnel_id: { format: 'uuid' },
+    location_id: { format: 'uuid' },
+    service_id: { format: 'uuid' },
+
   }
 }
