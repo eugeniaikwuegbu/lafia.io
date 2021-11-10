@@ -59,4 +59,22 @@ export class ServiceRepository {
     }
   }
 
+  public     extractServiceData(data: any) {
+    return {
+      out_patient: data['Out Patient Services'] === 'Yes',
+      in_patient: data['In Patient Services'] === 'Yes',
+      medical: data['Medical Services'],
+      surgical: data['Surgical Services'],
+      pediatrics: data['Pedigree Services'],
+      dental: data['Dental Services'],
+      obsterics_and_gynae: data['Obsterics and Gynecology Services'],
+      specific_clinical: data['Specific Clinical Services'],
+      beds: Number(data['Total Number of Beds']) || 0,
+      onsite_lab: data['Onsite Laboratory'] === 'Yes',
+      onsite_imaging: data['Onsite Imaging'] === 'Yes',
+      onsite_pharmacy: data['Onsite Pharmacy'] === 'Yes',
+      mortuary: data['Mortuary Services'] === 'Yes',
+      ambulance: data['Ambluance Services'] === 'Yes',
+    };
+  }
 }

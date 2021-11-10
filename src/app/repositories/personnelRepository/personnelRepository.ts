@@ -59,4 +59,24 @@ export class PersonnelRepository {
     }
   }
 
+  public extractPersonnelData(data: any) {
+    return {
+      doctors: Number(data["Number of Doctors"]),
+      pharmacists: Number(data["Number of Pharmacists"]),
+      pharmacy_technicians: Number(data["Number Pharmacy Technicians"]),
+      dentists: Number(data["Number of Dentists"]),
+      dental_technicians: Number(data["Number of Dental Technicians"]),
+      nurses: Number(data["Number of Nurses"]),
+      midwifes: Number(data["Number of Midwifes"]),
+      nurses_or_midwifes: Number(data["Number of Nurses/Midwifes"]),
+      lab_technicians: Number(data["Number of Lab Technicians"]),
+      lab_scientists: Number(data["Number of Lab Scientits"]),
+      health_records_officers: Number(data["Health Records/HIM Officers"]),
+      community_health_officers: Number(data["Number of Community Health Officer"]),
+      community_health_extension_workers: Number(data["Number of Community Health Extension Worker"]),
+      junior_community_health_workers: Number(data["Number of Junior Com Health Extension Worker"]),
+      environment_health_officers: Number(data["Number of Environmental Health Officers"]),
+      health_attendant: Number(data["Number of Health Attendant/Assistant"]),
+    };
+  }
 }

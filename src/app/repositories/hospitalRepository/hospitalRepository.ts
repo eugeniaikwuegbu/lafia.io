@@ -5,7 +5,7 @@ import {  GenericResponseError, HttpStatusCode } from '../../utils';
 
 @injectable()
 export class HospitalRepository {
-  public async createHospital(data: IHospital): Promise<IHospital> {
+  public async createHospital(data: any): Promise<IHospital> {
     try {
       return await transaction(HospitalModel, async (HospitalModel) => {
         return HospitalModel.query().insertGraphAndFetch(data);
@@ -20,7 +20,7 @@ export class HospitalRepository {
     try {
       return await transaction(HospitalModel, async (HospitalModel) => {
         return HospitalModel.query().where(data).withGraphFetched(`[
-        statuses, personnels, contacts ]`)
+        statuses, personnels, contacts, locations, services ]`)
           .first();
       });
     } catch (e) {
@@ -35,8 +35,7 @@ export class HospitalRepository {
     try {
       return await transaction(HospitalModel, async (HospitalModel) => {
         return HospitalModel.query().where({ id }).withGraphFetched(`[
-          statuses, personnels, contacts
-        ]`)
+          statuses, personnels, contacts, locations, services ]`)
           .first();
       });
     } catch (e) {
@@ -48,8 +47,7 @@ export class HospitalRepository {
     try {
       return await transaction(HospitalModel, async (HospitalModel) => {
         return HospitalModel.query().withGraphFetched(`[
-          statuses, personnels, contacts
-        ]`);
+          statuses, personnels, contacts, locations, services ]`);
       });
     } catch (e) {
       throw new GenericResponseError(e.message, e.code);
@@ -64,6 +62,29 @@ export class HospitalRepository {
     } catch (e) {
       throw new GenericResponseError(e.message, e.code);
     }
+  }
+
+  public async deleteHospital( id: string): Promise<any> {
+    return await transaction(HospitalModel, async (HospitalModel) => {
+      return HospitalModel.query().deleteById(id)
+    })
+  }
+
+  public extractHospitalData(data: any) {
+    return {
+      facility_code: data["unique_id"],
+      state_unique_id: data["state_unique_id"],
+      registration_number: data["Registration No"],
+      facility_name: data["Facility Name"],
+      alternate_name: data["Alternate Name"],
+      start_date: data["Start Date"],
+      ownership: data["Ownership"],
+      ownership_type: data["Ownership Type"],
+      facility_level: data["Facility Level"],
+      facility_level_option: data["Facility Level Option"],
+      days_of_operation: data["Days of Operation"],
+      hours_of_operation: data["Hours of Operation"],
+    };
   }
 
 }

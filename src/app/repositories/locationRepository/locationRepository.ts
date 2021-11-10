@@ -59,4 +59,15 @@ export class LocationRepository {
     }
   }
 
+  public extractLocationData(data: any ) {
+    return {
+      state: data['State'],
+      lga: data['LGA'],
+      ward: data['Ward'],
+      location: data['Physical Location'],
+      postal_address: data['Postal Address'],
+      longitude: Number(data['Longitude']),
+      latitude: Number(data['Latitude']),
+    };
+  }
 }

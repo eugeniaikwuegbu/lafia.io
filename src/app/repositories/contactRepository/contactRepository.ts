@@ -59,4 +59,12 @@ export class ContactRepository {
     }
   }
 
+  public extractContactData(data: any) {
+    return {
+      phone_number: data['Phone Number'],
+      alternate_number: data['Alternate Number'],
+      email: data['Email Address'],
+      website: data['Website'],
+    };
+  }
 }

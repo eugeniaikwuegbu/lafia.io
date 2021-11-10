@@ -49,4 +49,11 @@ export class StatusRepository {
     }
   }
 
+  public extractStatusData( data: any) {
+    return {
+      operational: data["Operational Status"],
+      registration: data["Registration Status"],
+      license: data["License Status"],
+    }
+  }
 }
