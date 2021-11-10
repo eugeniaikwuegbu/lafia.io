@@ -40,6 +40,5 @@ export const HospitalValidation: JSONSchema = {
     personnel_id: { format: 'uuid' },
     location_id: { format: 'uuid' },
     service_id: { format: 'uuid' },
-
   }
 }

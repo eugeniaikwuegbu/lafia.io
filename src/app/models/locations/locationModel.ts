@@ -6,7 +6,7 @@ import { LocationValidation } from './validation';
 
 export class LocationModel extends BaseModel implements ILocation {
   public state: ILocation['state'];
-  public lg: ILocation['lg'];
+  public lga: ILocation['lga'];
   public ward: ILocation['ward'];
   public location: ILocation['location'];
   public postal_address: ILocation['postal_address'];

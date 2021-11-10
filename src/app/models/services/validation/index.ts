@@ -10,8 +10,8 @@ export const ServiceValidation: JSONSchema = {
 
   ],
   properties: {
-    out_patient: { type: 'boolean' },
-    in_patient: { type: 'boolean' },
+    out_patient: { type: 'string' },
+    in_patient: { type: 'string' },
     medical: { type: 'string'},
     surgical: { type: 'string' },
     obsterics_and_gynae: { type: 'string' },
@@ -19,10 +19,10 @@ export const ServiceValidation: JSONSchema = {
     dental: { type: 'string' },
     specific_clinical: { type: 'string' },
     bed: {type: 'number'},
-    onsite_lab: { type: 'boolean' },
-    onsite_imaging: {type: 'boolean'},
-    onsite_pharmacy: { type: 'boolean' },
-    mortuary: { type: 'boolean' },
-    ambulance: {type: 'boolean'},
+    onsite_lab: { type: 'string' },
+    onsite_imaging: {type: 'string'},
+    onsite_pharmacy: { type: 'string' },
+    mortuary: { type: 'string' },
+    ambulance: {type: 'string'},
   }
 }

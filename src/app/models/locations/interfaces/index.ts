@@ -2,7 +2,7 @@ import { IBase } from '../../base';
 
 export interface ILocation extends IBase {
  state: string;
- lg: string;
+ lga: string;
  ward: string;
  location: string;
  postal_address: number;
@@ -12,7 +12,7 @@ export interface ILocation extends IBase {
 
 export interface IFindLocation extends IBase {
   state?: string;
-  lg?: string;
+  lga?: string;
   ward?: string;
   location?: string;
   postal_address?: number;

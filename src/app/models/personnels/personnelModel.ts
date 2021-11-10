@@ -5,21 +5,22 @@ import { IPersonnel } from './interfaces';
 import { PersonnelValidation } from './validation';
 
 export class PersonnelModel extends BaseModel implements IPersonnel {
-  public doctor: IPersonnel['doctor'];
-  public pharmacist: IPersonnel['pharmacist'];
-  public pharmacy_technician: IPersonnel['pharmacy_technician'];
-  public dentist: IPersonnel['dentist'];
-  public dental_technician: IPersonnel['dental_technician'];
-  public nurse: IPersonnel['nurse'];
-  public midwife: IPersonnel['midwife'];
-  public lab_technician: IPersonnel['lab_technician'];
-  public lab_scientist: IPersonnel['lab_scientist'];
-  public health_records_officer: IPersonnel['health_records_officer'];
-  public comm_health_officer: IPersonnel['comm_health_officer'];
-  public comm_health_extension_worker: IPersonnel['comm_health_extension_worker'];
-  public junior_comm_health_extension_worker: IPersonnel['junior_comm_health_extension_worker'];
-  public environment_health_officer: IPersonnel['environment_health_officer'];
-  public health_attendant: IPersonnel['health_attendant'];
+  public doctors: IPersonnel['doctors'];
+  public pharmacists: IPersonnel['pharmacists'];
+  public pharmacy_technicians: IPersonnel['pharmacy_technicians'];
+  public dentists: IPersonnel['dentists'];
+  public dental_technicians: IPersonnel['dental_technicians'];
+  public nurses: IPersonnel['nurses'];
+  public midwifes: IPersonnel['midwifes'];
+  public nurses_or_midwifes: IPersonnel['nurses_or_midwifes']
+  public lab_technicians: IPersonnel['lab_technicians'];
+  public lab_scientists: IPersonnel['lab_scientists'];
+  public health_records_officers: IPersonnel['health_records_officers'];
+  public community_health_officers: IPersonnel['community_health_officers'];
+  public community_health_extension_workers: IPersonnel['community_health_extension_workers'];
+  public junior_community_health_extension_workers: IPersonnel['junior_community_health_extension_workers'];
+  public environment_health_officers: IPersonnel['environment_health_officers'];
+  public health_attendants: IPersonnel['health_attendants'];
 
   static get tableName(): string {
     return `${Schema.lafiaService}.${Table.personnels}`;
