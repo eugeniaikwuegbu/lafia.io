@@ -32,7 +32,7 @@ export class HospitalModel extends BaseModel implements IHospital {
   static get jsonSchema(): JSONSchema {
     return HospitalValidation;
   }
-  static get relationshipMappings(): RelationMappings {
+  static get relationMappings(): RelationMappings {
     return {
       statuses: {
         relation: BaseModel.BelongsToOneRelation,

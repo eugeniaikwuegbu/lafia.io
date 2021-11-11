@@ -9,6 +9,8 @@ import {
   ServiceRepository, StatusRepository
 } from "../../repositories";
 import {error, GenericResponseError, HttpStatusCode, throwError} from "../../utils";
+import csv from 'csvtojson'
+import * as fs from "fs";
 
 @injectable()
 export class HospitalService {
@@ -38,6 +40,51 @@ export class HospitalService {
       throw new GenericResponseError(e.message, HttpStatusCode.INTERNAL_SERVER_ERROR);
     }
   };
+
+  async createHospitalFromCsvData(file: Express.Multer.File) {
+    const filePath = file.path;
+    const dataJson = await csv().fromFile(filePath);
+
+    const responseData: any = {
+      failed: [],
+      successful: [],
+      alreadyExists: [],
+    };
+    for (const data of dataJson) {
+      const hospital = this.extractedHospitalData(data);
+
+      try {
+        if (hospital.facility_name) {
+          const locationExists = await this.locationRepo.findOne({
+            longitude: hospital.locations.longitude,
+            latitude: hospital.locations.latitude,
+            location: hospital.locations.location,
+          });
+
+          if (locationExists) {
+            responseData.alreadyExists.push({
+              message: 'Hospital already exists',
+              data: hospital,
+            });
+          } else {
+            const hospitalCreated = await this.hospitalRepo.createHospital(hospital);
+            responseData.successful.push({
+              message: 'New Hospital created successfully',
+              data: hospitalCreated,
+            });
+          }
+        }
+      } catch (e) {
+        console.log('Error:', e.message);
+        responseData.failed.push({
+          message: e.message?.split('-')[1] || e.message,
+          data: hospital,
+        });
+      }
+    }
+      fs.unlinkSync(filePath);
+    return responseData
+  }
 
   public async findHospitalById(id: string): Promise<any> {
     try {
@@ -127,4 +174,5 @@ export class HospitalService {
         services,
     };
   }
+
 }

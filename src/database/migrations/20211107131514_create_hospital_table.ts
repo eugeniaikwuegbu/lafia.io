@@ -20,61 +20,39 @@ export async function up(knex: Knex): Promise<void> {
                   .primary(`${Table.hospitals}_id`);
                 tableBuilder
                   .string('facility_code')
-                  .unique()
-                  .notNullable();
                 tableBuilder
                   .string('state_unique_id')
-                  .unique()
-                  .notNullable();
                 tableBuilder
                   .string('registration_number')
-                  .unique()
                 tableBuilder
                   .string('facility_name')
-                  .notNullable();
                 tableBuilder
                   .string('alternate_name')
-                  .notNullable();
                 tableBuilder
                   .dateTime('start_date')
-                  .notNullable();
                 tableBuilder
                   .string('ownership')
-                  .notNullable();
                 tableBuilder
                   .string('ownership_type')
-                  .notNullable();
                 tableBuilder
                   .string('facility_level')
-                  .notNullable();
                 tableBuilder
                   .string('facility_level_option')
                 tableBuilder
                   .string('days_of_operation')
-                  .notNullable();
                 tableBuilder
                   .string('hours_of_operation')
-                  .notNullable();
                 tableBuilder
                   .uuid('status_id')
                   .unique()
-                  .notNullable();
                 tableBuilder
                   .uuid('contact_id')
-                  .unique()
-                  .notNullable();
                 tableBuilder
                   .uuid('personnel_id')
-                  .unique()
-                  .notNullable();
                 tableBuilder
                   .uuid('location_id')
-                  .unique()
-                  .notNullable();
                 tableBuilder
                   .uuid('service_id')
-                  .unique()
-                  .notNullable();
                 tableBuilder
                   .timestamps(true, true);
 

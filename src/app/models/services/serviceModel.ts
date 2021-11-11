@@ -13,7 +13,7 @@ export class ServiceModel extends BaseModel implements IService {
   public pediatrics: IService['pediatrics'];
   public dental: IService['dental'];
   public specific_clinical: IService['specific_clinical'];
-  public bed: IService['bed'];
+  public beds: IService['beds'];
   public onsite_lab: IService['onsite_lab'];
   public onsite_imaging: IService['onsite_imaging'];
   public onsite_pharmacy: IService['onsite_pharmacy'];

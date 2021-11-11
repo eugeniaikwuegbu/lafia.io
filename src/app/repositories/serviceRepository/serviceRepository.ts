@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import { transaction } from 'objection';
 import {IFindService, IService, ServiceModel} from '../../models';
 import {  GenericResponseError, HttpStatusCode } from '../../utils';
+import {v4 as uuidv4} from "uuid";
 
 @injectable()
 export class ServiceRepository {
@@ -61,6 +62,7 @@ export class ServiceRepository {
 
   public     extractServiceData(data: any) {
     return {
+      id: uuidv4(),
       out_patient: data['Out Patient Services'] === 'Yes',
       in_patient: data['In Patient Services'] === 'Yes',
       medical: data['Medical Services'],

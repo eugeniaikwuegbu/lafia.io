@@ -20,36 +20,52 @@ export async function up(knex: Knex): Promise<void> {
                   .primary(`${Table.personnels}_id`);
                 tableBuilder
                   .integer('doctors')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('pharmacists')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('pharmacy_technicians')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('dentists')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('dental_technicians')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('nurses')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('midwifes')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('nurses_or_midwifes')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('lab_technicians')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('lab_scientists')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('health_records_officers')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('community_health_officers')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('community_health_extension_workers')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('junior_community_health_extension_workers')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('environment_health_officers')
+                  .defaultTo(0)
                 tableBuilder
                   .integer('health_attendants')
+                  .defaultTo(0)
                 tableBuilder
                   .timestamps(true, true);
               });

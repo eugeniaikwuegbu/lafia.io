@@ -19,47 +19,34 @@ export async function up(knex: Knex): Promise<void> {
                   .defaultTo(knex.raw('gen_random_uuid()'))
                   .primary(`${Table.services}_id`);
                 tableBuilder
-                  .string('out_patient')
-                  .notNullable();
+                  .boolean('out_patient')
                 tableBuilder
-                  .string('in_patient')
-                  .notNullable();
+                  .boolean('in_patient')
                 tableBuilder
                   .string('medical')
-                  .notNullable();
                 tableBuilder
-                  .string('surgical')
-                  .notNullable();
+                  .string('surgical');
                 tableBuilder
                   .string('obsterics_and_gynae')
-                  .notNullable();
                 tableBuilder
                   .string('pediatrics')
-                  .notNullable();
                 tableBuilder
                   .string('dental')
-                  .notNullable();
                 tableBuilder
-                  .string('specific_clinical')
-                  .notNullable();
+                  .text('specific_clinical')
                 tableBuilder
-                  .integer('bed')
-                  .notNullable();
+                  .integer('beds')
+                  .defaultTo(0)
                 tableBuilder
-                  .string('onsite_lab')
-                  .notNullable();
+                  .boolean('onsite_lab')
                 tableBuilder
-                  .string('onsite_imaging')
-                  .notNullable();
+                  .boolean('onsite_imaging')
                 tableBuilder
-                  .string('onsite_pharmacy')
-                  .notNullable();
+                  .boolean('onsite_pharmacy')
                 tableBuilder
-                  .string('mortuary')
-                  .notNullable();
+                  .boolean('mortuary')
                 tableBuilder
-                  .string('ambulance')
-                  .notNullable();
+                  .boolean('ambulance')
                 tableBuilder
                   .timestamps(true, true);
               });

@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import { transaction } from 'objection';
 import {HospitalModel, IFindHospital, IHospital} from '../../models';
 import {  GenericResponseError, HttpStatusCode } from '../../utils';
+import { v4 as uuidv4 } from 'uuid';
 
 @injectable()
 export class HospitalRepository {
@@ -72,6 +73,7 @@ export class HospitalRepository {
 
   public extractHospitalData(data: any) {
     return {
+      id: uuidv4(),
       facility_code: data["unique_id"],
       state_unique_id: data["state_unique_id"],
       registration_number: data["Registration No"],

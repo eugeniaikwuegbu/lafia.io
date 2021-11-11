@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import { transaction } from 'objection';
 import {IFindLocation, ILocation, LocationModel} from '../../models';
 import {  GenericResponseError, HttpStatusCode } from '../../utils';
+import {v4 as uuidv4} from "uuid";
 
 @injectable()
 export class LocationRepository {
@@ -16,7 +17,7 @@ export class LocationRepository {
     }
   }
 
-  public async findOne(data: IFindLocation): Promise<ILocation> {
+  public async findOne(data: any): Promise<ILocation> {
     try {
       return await transaction(LocationModel, async (LocationModel) => {
         return LocationModel.query().where(data).first();
@@ -61,6 +62,7 @@ export class LocationRepository {
 
   public extractLocationData(data: any ) {
     return {
+      id: uuidv4(),
       state: data['State'],
       lga: data['LGA'],
       ward: data['Ward'],

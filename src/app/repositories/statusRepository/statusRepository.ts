@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import { transaction } from 'objection';
 import {IFindStatus, IStatus, StatusModel} from '../../models';
 import {  GenericResponseError, HttpStatusCode } from '../../utils';
+import {v4 as uuidv4} from "uuid";
 
 @injectable()
 export class StatusRepository {
@@ -51,6 +52,7 @@ export class StatusRepository {
 
   public extractStatusData( data: any) {
     return {
+      id: uuidv4(),
       operational: data["Operational Status"],
       registration: data["Registration Status"],
       license: data["License Status"],

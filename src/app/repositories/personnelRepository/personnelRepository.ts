@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import { transaction } from 'objection';
 import {IFindPersonnel, IPersonnel, PersonnelModel} from '../../models';
 import {  GenericResponseError, HttpStatusCode } from '../../utils';
+import {v4 as uuidv4} from "uuid";
 
 @injectable()
 export class PersonnelRepository {
@@ -61,6 +62,7 @@ export class PersonnelRepository {
 
   public extractPersonnelData(data: any) {
     return {
+      id: uuidv4(),
       doctors: Number(data["Number of Doctors"]),
       pharmacists: Number(data["Number of Pharmacists"]),
       pharmacy_technicians: Number(data["Number Pharmacy Technicians"]),
@@ -74,9 +76,9 @@ export class PersonnelRepository {
       health_records_officers: Number(data["Health Records/HIM Officers"]),
       community_health_officers: Number(data["Number of Community Health Officer"]),
       community_health_extension_workers: Number(data["Number of Community Health Extension Worker"]),
-      junior_community_health_workers: Number(data["Number of Junior Com Health Extension Worker"]),
+      junior_community_health_extension_workers: Number(data["Number of Junior Com Health Extension Worker"]),
       environment_health_officers: Number(data["Number of Environmental Health Officers"]),
-      health_attendant: Number(data["Number of Health Attendant/Assistant"]),
+      health_attendants: Number(data["Number of Health Attendant/Assistant"]),
     };
   }
 }

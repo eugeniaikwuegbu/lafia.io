@@ -3,25 +3,6 @@ import { JSONSchema } from 'objection';
 export const HospitalValidation: JSONSchema = {
   type: 'object',
   title: 'Hospital Schema Validation',
-  required: [
-    'facility_code',
-    'state_unique_id',
-    'registration_number',
-    'facility_name',
-    'alternate_name',
-    'start_date',
-    'ownership',
-    'ownership_type',
-    'facility_level',
-    'facility_level_option',
-    'days_of_operation',
-    'hours_of_operation',
-    'status_id',
-    'contact_id',
-    'personnel_id',
-    'location_id',
-    'service_id'
-  ],
   properties: {
     facility_code: { type: 'string' },
     state_unique_id: { type: 'string' },

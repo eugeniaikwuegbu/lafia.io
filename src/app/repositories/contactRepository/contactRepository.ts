@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import { transaction } from 'objection';
 import {ContactModel, IContact, IFindContact} from '../../models';
 import {  GenericResponseError, HttpStatusCode } from '../../utils';
+import {v4 as uuidv4} from "uuid";
 
 @injectable()
 export class ContactRepository {
@@ -61,6 +62,7 @@ export class ContactRepository {
 
   public extractContactData(data: any) {
     return {
+      id: uuidv4(),
       phone_number: data['Phone Number'],
       alternate_number: data['Alternate Number'],
       email: data['Email Address'],

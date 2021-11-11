@@ -20,13 +20,10 @@ export async function up(knex: Knex): Promise<void> {
                   .primary(`${Table.statuses}_id`);
                 tableBuilder
                   .string('operational')
-                  .notNullable();
                 tableBuilder
                   .string('registration')
-                  .notNullable();
                 tableBuilder
                   .string('license')
-                  .notNullable()
                 tableBuilder
                   .timestamps(true, true);
               });

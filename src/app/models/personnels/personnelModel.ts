@@ -22,6 +22,7 @@ export class PersonnelModel extends BaseModel implements IPersonnel {
   public environment_health_officers: IPersonnel['environment_health_officers'];
   public health_attendants: IPersonnel['health_attendants'];
 
+
   static get tableName(): string {
     return `${Schema.lafiaService}.${Table.personnels}`;
   }

@@ -3,17 +3,6 @@ import { JSONSchema } from 'objection';
 export const PersonnelValidation: JSONSchema = {
   type: 'object',
   title: 'Personnel Schema Validation',
-  required: [
-    'doctors',
-    'pharmacists', 'pharmacy_technicians',
-    'dentists', 'dental_technicians', 'nurses',
-    'midwifes', 'nurses_or_midwifes', 'lab_technicians',
-    'lab_scientists', 'health_records_officers',
-    'community_health_officers',
-    'community_health_extension_workers',
-    'junior_community_health_extension_workers',
-    'environment_health_officers', 'health_attendants'
-  ],
   properties: {
     doctors: { type: 'number' },
     pharmacists: { type: 'number'},

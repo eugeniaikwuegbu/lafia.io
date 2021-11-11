@@ -5,9 +5,9 @@ export interface ILocation extends IBase {
  lga: string;
  ward: string;
  location: string;
- postal_address: number;
- longitude: string;
- latitude: string;
+ postal_address: string;
+ longitude: number;
+ latitude: number;
 }
 
 export interface IFindLocation extends IBase {
@@ -15,7 +15,7 @@ export interface IFindLocation extends IBase {
   lga?: string;
   ward?: string;
   location?: string;
-  postal_address?: number;
-  longitude?: string;
-  latitude?: string;
+  postal_address?: string;
+  longitude?: number;
+  latitude?: number;
 }

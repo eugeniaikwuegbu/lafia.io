@@ -20,24 +20,20 @@ export async function up(knex: Knex): Promise<void> {
                   .primary(`${Table.locations}_id`);
                 tableBuilder
                   .string('state')
-                  .notNullable();
                 tableBuilder
                   .string('lga')
-                  .notNullable();
                 tableBuilder
                   .string('ward')
-                  .notNullable()
                 tableBuilder
                   .string('location')
-                  .notNullable();
                 tableBuilder
-                  .integer('postal_address')
+                  .string('postal_address')
                 tableBuilder
-                  .string('longitude')
-                  .notNullable();
+                  .decimal('longitude')
+                  .defaultTo(0.0)
                 tableBuilder
-                  .string('latitude')
-                  .notNullable();
+                  .decimal('latitude')
+                  .defaultTo(0.0)
                 tableBuilder
                   .timestamps(true, true);
               });
