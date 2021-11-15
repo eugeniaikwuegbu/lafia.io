@@ -1,5 +1,5 @@
 # About
-Lafia services
+Providers
 
 ## Installation
 To clone the project:
@@ -55,6 +55,10 @@ To run seeds on database
 yarn seed:run
 `````
 
+## API Documentation
+```
+https://documenter.getpostman.com/view/15851817/UVC8CRnP#b33a33a0-0574-407b-9ed1-ae65db1bf734
+```
 
 
 
