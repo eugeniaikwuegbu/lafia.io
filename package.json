@@ -1,6 +1,9 @@
 {
   "name": "providers-service",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "Server-Side implementation for providers.",
   "main": "./dist/src/app/index.js",
   "scripts": {
