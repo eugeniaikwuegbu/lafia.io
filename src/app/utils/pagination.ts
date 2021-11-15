@@ -42,8 +42,3 @@ export async function executePaginatedQuery(query: QueryBuilder<any>, label: str
     }
   };
 }
-
-export interface Pagination {
-  page?: number;
-  size?: number;
-}

@@ -1,6 +1,6 @@
 const TYPES = {
   // controllers
-  UploadController: Symbol('UploadController'),
+  HospitalController: Symbol('HospitalController'),
 
 
   // service

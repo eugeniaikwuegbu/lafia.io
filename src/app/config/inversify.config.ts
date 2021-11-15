@@ -11,14 +11,14 @@ import {
   LocationService, PersonnelService,
   ServicesService, StatusService
 } from "../services";
-import {UploadController} from '../controllers';
+import {HospitalController} from '../controllers';
 
 const container = new Container();
 
 // controllers
 container
-  .bind<UploadController>(TYPES.UploadController)
-  .to(UploadController)
+  .bind<HospitalController>(TYPES.HospitalController)
+  .to(HospitalController)
   .inSingletonScope();
 
 

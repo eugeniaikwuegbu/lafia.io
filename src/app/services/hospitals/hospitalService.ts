@@ -41,7 +41,7 @@ export class HospitalService {
     }
   };
 
-  async createHospitalFromCsvData(file: Express.Multer.File) {
+  public async createHospitalFromCsvData(file: Express.Multer.File) {
     const filePath = file.path;
     const dataJson = await csv().fromFile(filePath);
 
@@ -117,11 +117,11 @@ export class HospitalService {
     }
   };
 
-  public async findAll(): Promise<any> {
-    const hospitals = await this.hospitalRepo.getAllHospitals()
-    return {
-      message: 'Hospitals Retrieved Successfully',
-      data: hospitals
+  public async findAll(queryParams?: QueryParams): Promise<any> {
+    try{
+     return await this.hospitalRepo.findAllHospitals(queryParams);
+    } catch (e) {
+      throw new GenericResponseError(e.message, e.code);
     }
   }
 
@@ -144,6 +144,7 @@ export class HospitalService {
   };
 
   public async deleteHospitalById( id: string): Promise<any> {
+  try{
     const hospital = await this.hospitalRepo.findById(id)
 
     if (!hospital) {
@@ -154,6 +155,9 @@ export class HospitalService {
     return {
       message: 'Hospital Deleted Successfully',
       data: null
+    }
+  } catch (e) {
+      throw new GenericResponseError(e.message, e.code);
     }
   }
 
