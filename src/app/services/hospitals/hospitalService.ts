@@ -9,7 +9,7 @@ import {
   PersonnelRepository,
   ServiceRepository, StatusRepository
 } from "../../repositories";
-import {error, GenericResponseError, HttpStatusCode, throwError} from "../../utils";
+import {GenericResponseError, HttpStatusCode} from "../../utils";
 import csv from 'csvtojson'
 import * as fs from "fs";
 
@@ -89,15 +89,7 @@ export class HospitalService {
 
   public async findHospitalById(id: string): Promise<any> {
     try {
-      const hospital = await this.hospitalRepo.findById(id);
-
-      if (!hospital) {
-        throwError('Hospital not found', error.notFound)
-      }
-      return {
-        message: 'Hospital Retrieved Successfully',
-        data: hospital
-      }
+      return await this.hospitalRepo.findById(id);
     } catch (e) {
       throw new GenericResponseError(e.message, e.code);
     }
@@ -105,14 +97,7 @@ export class HospitalService {
 
   public async findOne(data: IFindHospital): Promise<any> {
     try {
-      const hospital =  await this.hospitalRepo.findOne(data);
-
-      if(!hospital) {
-        throwError(`Hospital not found`, error.notFound)
-      }
-      return {
-        message: 'Hospital Retrieved Successfully'
-      }
+      return await this.hospitalRepo.findOne(data);
     } catch (e) {
       throw new GenericResponseError(e.message, e.code);
     }
@@ -128,17 +113,7 @@ export class HospitalService {
 
   public async updateHospitalById(id: string, data: IFindHospital): Promise<any> {
     try {
-      const hospital = await this.hospitalRepo.findById(id)
-
-      if (!hospital) {
-        throwError('Hospital not found', error.notFound)
-      }
-
-      const updatedData = await this.hospitalRepo.updateHospitalById(id, data);
-      return {
-        message: 'Hospital Updated Successfully',
-        data: updatedData
-      }
+      return  await this.hospitalRepo.updateHospitalById(id, data);
     } catch (e) {
       throw new GenericResponseError(e.message, e.code);
     }
@@ -146,17 +121,7 @@ export class HospitalService {
 
   public async deleteHospitalById( id: string): Promise<any> {
   try{
-    const hospital = await this.hospitalRepo.findById(id)
-
-    if (!hospital) {
-      throwError('Hospital not found', error.badRequest)
-    }
-
-    await this.hospitalRepo.deleteHospital(id)
-    return {
-      message: 'Hospital Deleted Successfully',
-      data: null
-    }
+    return await this.hospitalRepo.deleteHospital(id)
   } catch (e) {
       throw new GenericResponseError(e.message, e.code);
     }

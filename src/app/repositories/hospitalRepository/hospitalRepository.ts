@@ -75,6 +75,7 @@ export class HospitalRepository {
       }
 
       if (facility_name) {
+
         query = query.whereRaw(`facility_name ILIKE '%${facility_name}%'`);
       }
 
