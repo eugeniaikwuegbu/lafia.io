@@ -1,7 +1,7 @@
 {
-  "name": "lafia-service",
+  "name": "providers-service",
   "version": "1.0.0",
-  "description": "Server-Side implementation for lafia services.",
+  "description": "Server-Side implementation for providers.",
   "main": "./dist/src/app/index.js",
   "scripts": {
     "start": "node dist/src/app/index.js",
