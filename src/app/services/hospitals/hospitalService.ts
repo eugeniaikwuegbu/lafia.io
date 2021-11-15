@@ -1,4 +1,5 @@
 import {inject, injectable} from "inversify";
+import { QueryParams } from '../../middlewares';
 import TYPES from "../../config/types";
 import {IFindHospital, IHospital} from "../../models";
 import {

@@ -4,6 +4,7 @@ import express from 'express';
 import container from './config/inversify.config';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { Env } from './config';
+import { extractQueryParams } from './middlewares';
 
 if (process.env.NODE_ENV !== 'production') {
   dotConfig();
@@ -17,6 +18,9 @@ server.setConfig((app) => {
   app.use(cors({
     origin: '*',
   }));
+
+  // Extract request queries
+  app.use(extractQueryParams());
 });
 
 const serverInstance = server.build();

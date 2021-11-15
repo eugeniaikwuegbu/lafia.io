@@ -36,7 +36,7 @@ export class HospitalRepository {
   public async findById(id: string): Promise<IHospital> {
     try {
       return await transaction(HospitalModel, async (HospitalModel) => {
-        return HospitalModel.query().where({ id }).withGraphFetched(`[
+        return HospitalModel.query().where({id}).withGraphFetched(`[
           statuses, personnels, contacts, locations, services ]`)
           .first();
       });
@@ -135,7 +135,7 @@ export class HospitalRepository {
     }
   }
 
-  public async deleteHospital( id: string): Promise<any> {
+  public async deleteHospital(id: string): Promise<any> {
     return await transaction(HospitalModel, async (HospitalModel) => {
       return HospitalModel.query().deleteById(id)
     })

@@ -1,4 +1,5 @@
 import { QueryBuilder } from 'objection';
+import { Pagination } from '../middlewares';
 
 export async function executePaginatedQuery(query: QueryBuilder<any>, label: string, pagination?: Pagination) {
   // Set default page and size should they are not provided.
